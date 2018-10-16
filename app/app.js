@@ -8,7 +8,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // Constants
-const PORT = 8080;
+const PORT = 9031;
 const HOST = '0.0.0.0';
 
 // view engine setup

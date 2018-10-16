@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host: process.env.Host,
+  host: process.env.MYSQL_HOST,
+  port: process.env.MSQL_PORT || 3306,
   user: 'root',
-  password: process.env.Password,
+  password: process.env.MYSQL_PASSWORD || 'Dekh24791le',
   database: 'authorsdb'
 });
 

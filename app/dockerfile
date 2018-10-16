@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:8.9-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -8,6 +8,8 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
+ENV   MYSQL_HOST=172.17.0.2 MYSQL_PASSWORD=Dekh24791le
+
 RUN npm install
 # If you are building your code for production
 # RUN npm install --only=production
@@ -15,6 +17,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 9031 8080
 
 CMD [ "npm", "start" ]
+
+# CMD ./node_modules/.bin/nodemon index.js
+# docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
