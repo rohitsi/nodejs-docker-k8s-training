@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  port: process.env.MSQL_PORT || 3306,
+  host: process.env.MYSQL_HOST || '127.0.0.1',
+  port: process.env.MYSQL_PORT || 3306,
   user: 'root',
   password: process.env.MYSQL_PASSWORD || 'Dekh24791le',
   database: 'authorsdb'
@@ -22,7 +22,7 @@ connection.query('SELECT * from authors', function (err, rows, fields) {
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {
-    title: 'Deploying stateful NodeJS containers on Kubernetes',
+    title: 'Deploying stateful NodeJS containers on Kubernetes - Rohit Singh',
     authors: authors
   });
 });

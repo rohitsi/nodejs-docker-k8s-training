@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-ENV   MYSQL_HOST=172.17.0.2 MYSQL_PASSWORD=Dekh24791le
+ENV   MYSQL_HOST=172.17.0.3 MYSQL_PASSWORD=trainDB55
 
 RUN npm install
 # If you are building your code for production
@@ -22,4 +22,7 @@ EXPOSE 9031 8080
 CMD [ "npm", "start" ]
 
 # CMD ./node_modules/.bin/nodemon index.js
-# docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+# docker run --name trainapp -d -p 9939:9031 -v $(pwd):/usr/src/app -e MYSQL_ROOT_PASSWORD=trainDB55 -e MYSQL_HOST=172.17.0.3 -e MYSQL_PORT=3321 igdtraining.azurecr.io/authorapp
+# docker run --name trainapp -d -p 9939:9031 --rm -e MYSQL_ROOT_PASSWORD=trainDB55 -e MYSQL_HOST=172.17.0.3 -e MYSQL_PORT=3321 igdtraining.azurecr.io/authorapp
+# docker run --name trainsql -d -p 3321:3306 -v $(pwd)/db:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=trainDB55 mysql
+
